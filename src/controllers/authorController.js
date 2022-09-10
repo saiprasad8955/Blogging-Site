@@ -77,7 +77,7 @@ const createAuthor = async function (req, res) {
 
     const author = await authorModels.create(req.body);
     let token = jwt.sign({ authorId: author._id.toString(), Name: author.fname }, "Blogging-Site")
-    return res.status(200).send({ status: true, msg: "Author Successfully Created", data: author ,token });
+    return res.status(201).send({ status: true, msg: "Author Successfully Created", data: author ,token });
 
   } catch (err) {
     return res.status(500).send({ status: false, msg: err.message });
